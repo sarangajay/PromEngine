@@ -19,11 +19,31 @@ public class PromoEngineServiceTest {
         assertEquals(0.00, promoEngineService.doCalculate());
     }
 
-    @DisplayName("Test PromoEngineService.doCalculate() with single shopping cart")
+    @DisplayName("Test PromoEngineService.doCalculate() with single shopping cart with single item")
     @Test
     public void total_of_single_shopping_cart() {
         PromoEngineService promoEngineService = buildCartWithItems(new Item("A", 2));
         assertEquals(100.0, promoEngineService.doCalculate());
+    }
+
+    @DisplayName("Test PromoEngineService.doCalculate() with single shopping cart with single item per item")
+    @Test
+    public void total_of_shopping_cart_with_single_item_from_item_type() {
+        PromoEngineService promoEngineService = buildCartWithItems(
+                new Item("A", 1),
+                new Item("B", 1),
+                new Item("C", 1));
+        assertEquals(100.0, promoEngineService.doCalculate());
+    }
+
+    @DisplayName("Test PromoEngineService.doCalculate() with single shopping cart with multiple items per item")
+    @Test
+    public void total_of_shopping_cart_with_multiple_items_from_item_type(){
+        PromoEngineService promoEngineService = buildCartWithItems(
+                new Item("A", 5),
+                new Item("B", 5),
+                new Item("C", 1));
+        assertEquals(370.00, promoEngineService.doCalculate());
     }
 
     private PromoEngineService buildCartWithItems(Item... items) {
