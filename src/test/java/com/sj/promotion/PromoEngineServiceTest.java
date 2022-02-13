@@ -46,6 +46,17 @@ public class PromoEngineServiceTest {
         assertEquals(370.00, promoEngineService.doCalculate());
     }
 
+    @DisplayName("Test PromoEngineService.doCalculate() with single shopping cart with multi promotions with multiple items per item")
+    @Test
+    public void total_of_shopping_cart_with_multi_promotions_multiple_items_from_item_type(){
+        PromoEngineService promoEngineService = buildCartWithItems(
+                new Item("A", 3),
+                new Item("B", 5),
+                new Item("C", 1),
+                new Item("D", 1));
+        assertEquals(280.00, promoEngineService.doCalculate());
+    }
+
     private PromoEngineService buildCartWithItems(Item... items) {
         return new PromoEngineService(Arrays.asList(items));
     }
