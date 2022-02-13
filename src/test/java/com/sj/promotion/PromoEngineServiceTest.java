@@ -1,6 +1,7 @@
 package com.sj.promotion;
 
 import com.sj.promotion.dto.Item;
+import com.sj.promotion.service.PromoEngineService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ public class PromoEngineServiceTest {
     @Test
     void empty_shopping_cart() {
         PromoEngineService promoEngineService = buildCartWithItems();
-        assertEquals(5.00, promoEngineService.doCalculate());
+        assertEquals(0.00, promoEngineService.doCalculate());
     }
 
     @DisplayName("Test PromoEngineService.doCalculate() with single shopping cart")
